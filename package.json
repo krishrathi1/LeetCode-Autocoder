@@ -1,0 +1,16 @@
+{
+  "name": "leetcode-automation",
+  "version": "1.0.0",
+  "description": "LeetCode solver using local Ollama",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "puppeteer": "^21.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
