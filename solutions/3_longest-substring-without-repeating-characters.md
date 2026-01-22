@@ -1,15 +1,25 @@
-```python
-class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        max_len = 0
-        char_index = {}
+```java
+import java.util.HashSet;
+import java.util.Set;
 
-        for i in range(len(s)):
-            if s[i] in char_index and char_index[s[i]] >= i:
-                max_len = max(max_len, i - char_index[s[i]])
-            else:
-                max_len = max(max_len, i - char_index.get(s[i], -1))
-            char_index[s[i]] = i
-
-        return max_len
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int left = 0;
+        Set<Character> set = new HashSet<>();
+        
+        int maxLength = 0;
+        
+        for (int right = 0; right < s.length(); right++) {
+            while (set.contains(s.charAt(right))) {
+                set.remove(s.charAt(left));
+                left++;
+            }
+            
+            set.add(s.charAt(right));
+            maxLength = Math.max(maxLength, right - left + 1);
+        }
+        
+        return maxLength;
+    }
+}
 ```

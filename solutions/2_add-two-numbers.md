@@ -1,29 +1,30 @@
 ```python
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+from typing import List
 
 class Solution:
-    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        dummyHead = ListNode(0)
-        p, q, current = l1, l2, dummyHead
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy_head = ListNode(0)
+        current = dummy_head
         carry = 0
-
-        while p or q:
-            x = p.val if p else 0
-            y = q.val if q else 0
+        
+        while l1 or l2:
+            x = l1.val if l1 else 0
+            y = l2.val if l2 else 0
+            
             sum = carry + x + y
             carry = sum // 10
-            current.next = ListNode(sum % 10)
+            val = sum % 10
+            
+            current.next = ListNode(val)
             current = current.next
-
-            if p: p = p.next
-            if q: q = q.next
-
+            
+            if l1: l1 = l1.next
+            if l2: l2 = l2.next
+        
         if carry > 0:
             current.next = ListNode(carry)
-
-        return dummyHead.next
+        
+        return dummy_head.next
 ```
+
+Note: `ListNode` is a standard data structure in LeetCode, representing a node in a singly linked list.
